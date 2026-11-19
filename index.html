@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#103b35">
+  <meta name="description" content="Plan jeepney trips and explore routes, terminals, and fare estimates across Pampanga.">
+  <title>Biyaheng Pampanga — Jeepney Routes & Fares</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: "#103b35",
+            leaf: "#1e6755",
+            gold: "#f2b84b",
+            cream: "#f7f7f2"
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script defer src="data.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" data-view-link="planner" aria-label="Biyaheng Pampanga home">
+      <span class="brand-mark"><i data-lucide="waypoints"></i></span>
+      <span><strong>Biyaheng</strong><small>PAMPANGA</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <button class="nav-link active" data-view-link="planner">Route planner</button>
+      <button class="nav-link" data-view-link="directory">Terminals</button>
+      <button class="nav-link" data-view-link="fares">Signboards & fares</button>
+      <button class="nav-link" data-view-link="contribute">Contribute</button>
+    </nav>
+    <button id="theme-toggle" class="icon-button" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <i data-lucide="moon"></i>
+    </button>
+  </header>
+
+  <main>
+    <section id="view-planner" class="view active">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">YOUR LOCAL JEEPNEY COMPANION</p>
+          <h1>Get there, <span>the local way.</span></h1>
+          <p class="hero-copy">Explore jeepney connections across Pampanga and find a route that works for you.</p>
+        </div>
+        <div class="hero-chip"><i data-lucide="map-pin"></i> Pampanga, Philippines</div>
+      </div>
+
+      <div class="planner-layout">
+        <section class="panel planner-panel">
+          <div class="panel-heading">
+            <div><p class="eyebrow">PLAN A JOURNEY</p><h2>Where are you headed?</h2></div>
+            <button id="locate-btn" class="text-button"><i data-lucide="locate-fixed"></i> Use my location</button>
+          </div>
+          <label class="field-label" for="origin">Starting point</label>
+          <select id="origin" class="field"></select>
+          <button id="swap-btn" class="swap-button" aria-label="Swap origin and destination">
+            <i data-lucide="arrow-down-up"></i>
+          </button>
+          <label class="field-label" for="destination">Destination</label>
+          <select id="destination" class="field"></select>
+          <div class="form-row">
+            <label class="field-label" for="passenger-type">Passenger fare</label>
+            <select id="passenger-type" class="field">
+              <option value="regular">Regular</option>
+              <option value="discounted">Student / Senior / PWD (20% estimate)</option>
+            </select>
+          </div>
+          <button id="plan-btn" class="primary-button"><i data-lucide="route"></i> Find my route</button>
+          <p id="planner-status" class="status" role="status">Loading Pampanga routes…</p>
+          <div id="route-results" class="route-results" aria-live="polite"></div>
+        </section>
+
+        <section class="map-panel">
+          <div id="map" aria-label="Interactive map of Pampanga jeepney routes"></div>
+          <div class="map-caption"><span class="live-dot"></span> OpenStreetMap · Free map data</div>
+        </section>
+      </div>
+    </section>
+
+    <section id="view-directory" class="view">
+      <div class="page-heading">
+        <p class="eyebrow">FIND YOUR NEAREST HUB</p>
+        <h1>Terminals & stops</h1>
+        <p>Browse the directory and use any stop as your trip origin.</p>
+      </div>
+      <div class="toolbar">
+        <label class="search-box"><i data-lucide="search"></i>
+          <input id="stop-search" type="search" placeholder="Search stops or municipalities…">
+        </label>
+        <select id="municipality-filter" class="field compact"><option value="">All municipalities</option></select>
+      </div>
+      <div id="stops-grid" class="card-grid"></div>
+    </section>
+
+    <section id="view-fares" class="view">
+      <div class="page-heading">
+        <p class="eyebrow">KNOW BEFORE YOU GO</p>
+        <h1>Signboards & fare guide</h1>
+        <p>Explore listed connections and estimate a fare by distance.</p>
+      </div>
+      <div class="fare-layout">
+        <section class="panel">
+          <div class="panel-heading"><div><p class="eyebrow">QUICK ESTIMATE</p><h2>Fare calculator</h2></div></div>
+          <label class="field-label" for="jeep-type">Jeepney type</label>
+          <select id="jeep-type" class="field">
+            <option value="traditional">Traditional jeepney</option>
+            <option value="modern">Modern jeepney</option>
+          </select>
+          <label class="field-label" for="distance-km">Distance (kilometres)</label>
+          <input id="distance-km" class="field" type="number" min="0" step="0.1" value="5">
+          <label class="field-label" for="calc-passenger">Passenger type</label>
+          <select id="calc-passenger" class="field">
+            <option value="regular">Regular</option>
+            <option value="discounted">Student / Senior / PWD (20% estimate)</option>
+          </select>
+          <div id="fare-estimate" class="fare-estimate"></div>
+          <p class="fine-print">Planning estimate only. Rates may change; confirm the fare with the driver or LTFRB advisories.</p>
+        </section>
+        <section class="panel">
+          <div class="panel-heading"><div><p class="eyebrow">AT A GLANCE</p><h2>Jeepney colors</h2></div></div>
+          <div class="legend-list">
+            <div><span class="color-swatch gray"></span><span><strong>Gray</strong><small>Angeles city routes</small></span></div>
+            <div><span class="color-swatch yellow"></span><span><strong>Yellow</strong><small>Angeles city routes</small></span></div>
+            <div><span class="color-swatch green"></span><span><strong>Green</strong><small>Angeles city routes</small></span></div>
+            <div><span class="color-swatch checker"></span><span><strong>Checkered</strong><small>Route marking varies</small></span></div>
+          </div>
+        </section>
+      </div>
+      <div class="panel catalog-panel">
+        <div class="panel-heading"><div><p class="eyebrow">AVAILABLE CONNECTIONS</p><h2>Route signboards</h2></div>
+          <label class="search-box small-search"><i data-lucide="search"></i><input id="route-search" type="search" placeholder="Search routes…"></label>
+        </div>
+        <div id="routes-list" class="routes-list"></div>
+      </div>
+    </section>
+
+    <section id="view-contribute" class="view">
+      <div class="page-heading">
+        <p class="eyebrow">HELP THE COMMUNITY</p>
+        <h1>Share a route update</h1>
+        <p>Know a fare, route, or terminal detail that needs updating? Send it our way.</p>
+      </div>
+      <form id="contribution-form" class="panel contribution-form">
+        <label class="field-label" for="report-type">What would you like to share?</label>
+        <select id="report-type" class="field" required>
+          <option value="New jeepney route">New jeepney route</option>
+          <option value="Fare update">Fare update</option>
+          <option value="Terminal or stop note">Terminal or stop note</option>
+          <option value="Correction">Correction</option>
+        </select>
+        <label class="field-label" for="report-location">Route, stop, or municipality</label>
+        <input id="report-location" class="field" required placeholder="e.g. Dau to San Fernando">
+        <label class="field-label" for="report-details">Details</label>
+        <textarea id="report-details" class="field textarea" rows="5" required placeholder="Include signboard, fare, landmarks, or other helpful details."></textarea>
+        <label class="field-label" for="report-contact">Email (optional)</label>
+        <input id="report-contact" class="field" type="email" placeholder="you@example.com">
+        <button class="primary-button" type="submit"><i data-lucide="send"></i> Prepare submission</button>
+        <p id="form-status" class="status" role="status"></p>
+        <p class="fine-print">This demo uses a mailto fallback. To collect submissions online, connect a free Formspree or Google Forms endpoint in <code>app.js</code>.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Biyaheng Pampanga</span>
+    <span>Community-powered · Always confirm route and fare locally</span>
+  </footer>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <button class="active" data-view-link="planner"><i data-lucide="route"></i><span>Plan</span></button>
+    <button data-view-link="directory"><i data-lucide="map-pinned"></i><span>Stops</span></button>
+    <button data-view-link="fares"><i data-lucide="ticket"></i><span>Fares</span></button>
+    <button data-view-link="contribute"><i data-lucide="messages-square"></i><span>Share</span></button>
+  </nav>
+</body>
+</html>
