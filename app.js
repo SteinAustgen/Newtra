@@ -1,4 +1,4 @@
-/* Published Google Sheets CSV endpoints. Replace with your published CSV URLs as needed. */
+/* Keep stops.csv and routes.csv beside index.html; relative URLs work on GitHub Pages. */
 const STOPS_CSV_URL = "./stops.csv";
 const ROUTES_CSV_URL = "./routes.csv";
 /* Optional free Formspree endpoint, e.g. https://formspree.io/f/xxxxxxx. */
@@ -59,8 +59,8 @@ async function loadData() {
   if (configured && window.Papa) {
     try {
       const [stopsText, routesText] = await Promise.all([fetchCsv(STOPS_CSV_URL), fetchCsv(ROUTES_CSV_URL)]);
-      const stopsResult = Papa.parse(stopsText, {header:true,skipEmptyLines:true,transformHeader:h=>h.trim()});
-      const routesResult = Papa.parse(routesText, {header:true,skipEmptyLines:true,transformHeader:h=>h.trim()});
+      const stopsResult = parseCsvObjects(stopsText, ["stop_id","name","municipality","lat","lng"]);
+      const routesResult = parseCsvObjects(routesText, ["route_id","signboard","jeep_color","from_stop_id","to_stop_id","regular_fare","discounted_fare","notes"]);
       const stops = stopsResult.data.filter(r=>r.stop_id&&r.name).map(r=>({stop_id:r.stop_id.trim(),name:r.name.trim(),municipality:(r.municipality||"Other").trim(),lat:num(r.lat,NaN),lng:num(r.lng,NaN)})).filter(s=>Number.isFinite(s.lat)&&Number.isFinite(s.lng));
       const routes = routesResult.data.filter(r=>r.route_id&&r.from_stop_id&&r.to_stop_id).map(r=>({route_id:r.route_id.trim(),signboard:(r.signboard||"Jeepney route").trim(),jeep_color:normalizeColor(r.jeep_color),from_stop_id:r.from_stop_id.trim(),to_stop_id:r.to_stop_id.trim(),regular_fare:num(r.regular_fare),discounted_fare:num(r.discounted_fare,num(r.regular_fare)*.8),notes:(r.notes||"").trim()}));
       if (!stops.length || !routes.length) throw new Error("Published sheets contained no usable rows.");
@@ -74,7 +74,14 @@ async function loadData() {
   state.stopById=new Map(state.stops.map(stop=>[stop.stop_id,stop]));
 }
 async function fetchCsv(url) { const response=await fetch(url,{cache:"no-store"}); if(!response.ok) throw new Error(`CSV request failed (${response.status}).`); return response.text(); }
-function normalizeColor(color) { const value=String(color||"gray").toLowerCase().trim(); return ["gray","yellow","green","checkered"].includes(value)?value:"gray"; }
+function parseCsvObjects(text, requiredHeaders) {
+  const rows = Papa.parse(text, { header:false, skipEmptyLines:true }).data;
+  const headerIndex = rows.findIndex(row => requiredHeaders.every(name => row.some(cell => String(cell).trim() === name)));
+  if (headerIndex < 0) throw new Error(`CSV header not found: ${requiredHeaders.join(", ")}`);
+  const headers = rows[headerIndex].map(cell => String(cell).trim());
+  return { data: rows.slice(headerIndex + 1).filter(row => row.some(cell => String(cell).trim() !== "")).map(row => Object.fromEntries(headers.map((name,index) => [name, String(row[index] ?? "").trim()]))) };
+}
+function normalizeColor(color) { const value=String(color||"gray").toLowerCase().trim(); if(value.includes("check"))return "checkered"; if(value.includes("yellow"))return "yellow"; if(value.includes("green"))return "green"; if(value.includes("gray")||value.includes("grey"))return "gray"; return "gray"; }
 
 function populateSelects() {
   const groups=groupStops();
