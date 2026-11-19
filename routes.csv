@@ -1,0 +1,79 @@
+,,,,,,,
+"route_id,signboard,jeep_color,from_stop_id,to_stop_id,regular_fare,discounted_fare,notes
+101,Angeles - San Fernando (Highway),Traditional / White Modern,1,5,35,28,Drops at Super 8 after 7 AM; goes to HAU before 7 AM
+102,San Fernando - Angeles (Highway),Traditional / White Modern,5,1,35,28,Passes Telabastagan and Sindalan and Dolores
+103,SM Pampanga - Intersection,Traditional / White Modern,2,1,13,11,Via Robinsons Starmills and Lazatin Blvd
+104,Intersection - SM Pampanga,Traditional / White Modern,1,2,13,11,Terminal located near SM Pampanga Annex
+105,San Fernando - Palengke / Capitol,Traditional / White Modern,1,3,13,11,Passes Provincial Capitol and Cathedral
+106,Palengke - Intersection,Traditional / White Modern,3,1,13,11,Short city loop
+107,SM Pampanga - Maimpis / SACOP,Green / E-Jeep,2,4,18,15,Passes Capital Town and Calcutta Medical Center
+108,Maimpis - SM Pampanga,Green / E-Jeep,4,2,18,15,Departs roughly every 30 minutes
+109,San Fernando - Mexico - Arayat,Traditional / White Modern,2,19,15,12,First leg toward Mexico Public Market
+110,Mexico - Arayat,Traditional / White Modern,19,20,25,20,Continuation of San Fernando - Arayat jeep
+111,Arayat - Mexico,Traditional / White Modern,20,19,25,20,Return trip via Sta. Ana
+112,Mexico - SM Pampanga,Traditional / White Modern,19,2,15,12,Drops at SM Pampanga / Robinsons
+113,San Fernando - Candaba,Traditional / White Modern,2,21,35,28,Passes Mexico and Sta. Ana
+114,Candaba - SM Pampanga,Traditional / White Modern,21,2,35,28,Return trip to San Fernando
+115,Guagua - San Fernando,Traditional / White Modern,13,1,25,20,Passes Bacolor via Jose Abad Santos Ave
+116,San Fernando - Guagua,Traditional / White Modern,1,13,25,20,Loads near Intersection / Jollibee area
+117,Lubao - Guagua,Traditional / White Modern,14,13,15,12,Passes Sta. Cruz and Sto. Tomas Lubao
+118,Guagua - Lubao,Traditional / White Modern,13,14,15,12,Loads at Guagua Public Market Terminal
+119,Floridablanca - Guagua,Traditional / White Modern,15,13,20,16,Passes Valdez and Sta. Monica
+120,Guagua - Floridablanca,Traditional / White Modern,13,15,20,16,Loads at Guagua Public Market Terminal
+121,Sasmuan - Guagua,Traditional / White Modern,16,13,15,12,Short inter-town route
+122,Guagua - Sasmuan,Traditional / White Modern,13,16,15,12,Loads at Guagua Public Market Terminal
+123,Apalit - San Fernando,Traditional / White Modern,17,1,30,24,Passes San Simon and Minalin Junction and Sto. Tomas
+124,San Fernando - Apalit,Traditional / White Modern,1,17,30,24,Loads at San Fernando Intersection
+125,Macabebe / Masantol - Apalit,Traditional / White Modern,18,17,18,15,Connects coastal towns to McArthur Highway
+126,Apalit - Macabebe / Masantol,Traditional / White Modern,17,18,18,15,Loads near Apalit Crossing
+127,C-Point - Balibago - H-Way,Gray,6,7,15,12,Runs from SM Clark through Balibago to Jenra
+128,C-Point - Balibago - H-Way,Gray,7,6,15,12,Return trip to SM City Clark
+129,Villa - Pampang,Yellow,7,8,13,11,Connects Jenra/Rotonda to HAU and Nepo Quad
+130,Villa - Pampang,Yellow,8,7,13,11,Return loop to Angeles Crossing
+131,Angeles - Dau,Checkered / Highway,7,9,15,12,Drops along McArthur Hwy near Dau Terminal
+132,Dau - Angeles,Checkered / Highway,9,7,15,12,Return trip to Angeles Rotonda
+133,Dau - Mabalacat,Traditional / White Modern,9,10,18,15,Passes Xevera and Madapdap turnoff
+134,Mabalacat - Dau,Traditional / White Modern,10,9,18,15,Return trip toward Dau / Angeles
+135,Angeles - Magalang,Traditional / White Modern,7,11,28,22,Passes Marquee Mall and Pandan
+136,Magalang - Angeles,Traditional / White Modern,11,7,28,22,Return trip to Angeles Crossing
+137,Angeles - Porac,Traditional / White Modern,8,12,25,20,Loads near Nepo Quad / Friendship Highway
+138,Porac - Angeles,Traditional / White Modern,12,8,25,20,Return trip to Nepo / Angeles Proper",,,,,,,
+route_id,signboard,jeep_color,from_stop_id,to_stop_id,regular_fare,discounted_fare,notes
+101,Angeles - San Fernando (Highway),Traditional / White Modern,1,5,35,28,Drops at Super 8 after 7 AM; goes to HAU before 7 AM
+102,San Fernando - Angeles (Highway),Traditional / White Modern,5,1,35,28,Passes Telabastagan and Sindalan and Dolores
+103,SM Pampanga - Intersection,Traditional / White Modern,2,1,13,11,Via Robinsons Starmills and Lazatin Blvd
+104,Intersection - SM Pampanga,Traditional / White Modern,1,2,13,11,Terminal located near SM Pampanga Annex
+105,San Fernando - Palengke / Capitol,Traditional / White Modern,1,3,13,11,Passes Provincial Capitol and Cathedral
+106,Palengke - Intersection,Traditional / White Modern,3,1,13,11,Short city loop
+107,SM Pampanga - Maimpis / SACOP,Green / E-Jeep,2,4,18,15,Passes Capital Town and Calcutta Medical Center
+108,Maimpis - SM Pampanga,Green / E-Jeep,4,2,18,15,Departs roughly every 30 minutes
+109,San Fernando - Mexico - Arayat,Traditional / White Modern,2,19,15,12,First leg toward Mexico Public Market
+110,Mexico - Arayat,Traditional / White Modern,19,20,25,20,Continuation of San Fernando - Arayat jeep
+111,Arayat - Mexico,Traditional / White Modern,20,19,25,20,Return trip via Sta. Ana
+112,Mexico - SM Pampanga,Traditional / White Modern,19,2,15,12,Drops at SM Pampanga / Robinsons
+113,San Fernando - Candaba,Traditional / White Modern,2,21,35,28,Passes Mexico and Sta. Ana
+114,Candaba - SM Pampanga,Traditional / White Modern,21,2,35,28,Return trip to San Fernando
+115,Guagua - San Fernando,Traditional / White Modern,13,1,25,20,Passes Bacolor via Jose Abad Santos Ave
+116,San Fernando - Guagua,Traditional / White Modern,1,13,25,20,Loads near Intersection / Jollibee area
+117,Lubao - Guagua,Traditional / White Modern,14,13,15,12,Passes Sta. Cruz and Sto. Tomas Lubao
+118,Guagua - Lubao,Traditional / White Modern,13,14,15,12,Loads at Guagua Public Market Terminal
+119,Floridablanca - Guagua,Traditional / White Modern,15,13,20,16,Passes Valdez and Sta. Monica
+120,Guagua - Floridablanca,Traditional / White Modern,13,15,20,16,Loads at Guagua Public Market Terminal
+121,Sasmuan - Guagua,Traditional / White Modern,16,13,15,12,Short inter-town route
+122,Guagua - Sasmuan,Traditional / White Modern,13,16,15,12,Loads at Guagua Public Market Terminal
+123,Apalit - San Fernando,Traditional / White Modern,17,1,30,24,Passes San Simon and Minalin Junction and Sto. Tomas
+124,San Fernando - Apalit,Traditional / White Modern,1,17,30,24,Loads at San Fernando Intersection
+125,Macabebe / Masantol - Apalit,Traditional / White Modern,18,17,18,15,Connects coastal towns to McArthur Highway
+126,Apalit - Macabebe / Masantol,Traditional / White Modern,17,18,18,15,Loads near Apalit Crossing
+127,C-Point - Balibago - H-Way,Gray,6,7,15,12,Runs from SM Clark through Balibago to Jenra
+128,C-Point - Balibago - H-Way,Gray,7,6,15,12,Return trip to SM City Clark
+129,Villa - Pampang,Yellow,7,8,13,11,Connects Jenra/Rotonda to HAU and Nepo Quad
+130,Villa - Pampang,Yellow,8,7,13,11,Return loop to Angeles Crossing
+131,Angeles - Dau,Checkered / Highway,7,9,15,12,Drops along McArthur Hwy near Dau Terminal
+132,Dau - Angeles,Checkered / Highway,9,7,15,12,Return trip to Angeles Rotonda
+133,Dau - Mabalacat,Traditional / White Modern,9,10,18,15,Passes Xevera and Madapdap turnoff
+134,Mabalacat - Dau,Traditional / White Modern,10,9,18,15,Return trip toward Dau / Angeles
+135,Angeles - Magalang,Traditional / White Modern,7,11,28,22,Passes Marquee Mall and Pandan
+136,Magalang - Angeles,Traditional / White Modern,11,7,28,22,Return trip to Angeles Crossing
+137,Angeles - Porac,Traditional / White Modern,8,12,25,20,Loads near Nepo Quad / Friendship Highway
+138,Porac - Angeles,Traditional / White Modern,12,8,25,20,Return trip to Nepo / Angeles Proper

@@ -1,0 +1,45 @@
+,,,,
+"stop_id,name,municipality,lat,lng
+1,San Fernando Intersection,City of San Fernando,15.0342,120.6844
+2,SM City Pampanga Jeepney Terminal,City of San Fernando,15.0518,120.6994
+3,San Fernando Palengke (Poblacion),City of San Fernando,15.0286,120.6931
+4,Maimpis Government Center (SACOP),City of San Fernando,15.0694,120.6542
+5,Angeles Crossing / Super 8,Angeles City,15.1338,120.5912
+6,SM City Clark Jeepney Terminal,Angeles City,15.1678,120.5801
+7,Angeles Jenra / Rotonda,Angeles City,15.1348,120.5901
+8,Nepo Quad / HAU Area,Angeles City,15.1328,120.5888
+9,Dau Bus Terminal / McArthur Hwy,Mabalacat,15.1744,120.5881
+10,Mabalacat Public Market,Mabalacat,15.2225,120.5739
+11,Magalang Town Proper,Magalang,15.2131,120.6594
+12,Porac Town Proper,Porac,15.0714,120.5422
+13,Guagua Public Market Terminal,Guagua,14.9658,120.6328
+14,Lubao Municipal Hall / Highway,Lubao,14.9389,120.5983
+15,Floridablanca Terminal,Floridablanca,14.9744,120.5286
+16,Sasmuan Town Proper,Sasmuan,14.9367,120.6214
+17,Apalit Public Market / Crossing,Apalit,14.9497,120.7589
+18,Macabebe / Masantol Terminal,Macabebe,14.9069,120.7153
+19,Mexico Public Market,Mexico,15.0647,120.7197
+20,Arayat Town Proper,Arayat,15.1508,120.7694
+21,Candaba Town Proper,Candaba,15.0931,120.8283",,,,
+stop_id,name,municipality,lat,lng
+1,San Fernando Intersection,City of San Fernando,15.0342,120.6844
+2,SM City Pampanga Jeepney Terminal,City of San Fernando,15.0518,120.6994
+3,San Fernando Palengke (Poblacion),City of San Fernando,15.0286,120.6931
+4,Maimpis Government Center (SACOP),City of San Fernando,15.0694,120.6542
+5,Angeles Crossing / Super 8,Angeles City,15.1338,120.5912
+6,SM City Clark Jeepney Terminal,Angeles City,15.1678,120.5801
+7,Angeles Jenra / Rotonda,Angeles City,15.1348,120.5901
+8,Nepo Quad / HAU Area,Angeles City,15.1328,120.5888
+9,Dau Bus Terminal / McArthur Hwy,Mabalacat,15.1744,120.5881
+10,Mabalacat Public Market,Mabalacat,15.2225,120.5739
+11,Magalang Town Proper,Magalang,15.2131,120.6594
+12,Porac Town Proper,Porac,15.0714,120.5422
+13,Guagua Public Market Terminal,Guagua,14.9658,120.6328
+14,Lubao Municipal Hall / Highway,Lubao,14.9389,120.5983
+15,Floridablanca Terminal,Floridablanca,14.9744,120.5286
+16,Sasmuan Town Proper,Sasmuan,14.9367,120.6214
+17,Apalit Public Market / Crossing,Apalit,14.9497,120.7589
+18,Macabebe / Masantol Terminal,Macabebe,14.9069,120.7153
+19,Mexico Public Market,Mexico,15.0647,120.7197
+20,Arayat Town Proper,Arayat,15.1508,120.7694
+21,Candaba Town Proper,Candaba,15.0931,120.8283
